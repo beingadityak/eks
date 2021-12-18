@@ -7,6 +7,7 @@ kind: ClusterConfig
 metdata:
   name: custom-vpc-cluster
   region: us-west-2
+  version: "1.20"
 
 vpc:
   cidr: 172.16.0.0/16
