@@ -1,0 +1,29 @@
+---
+# EKS Cluster config to create private nodes with NAT Gateway
+
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metdata:
+  name: custom-vpc-cluster
+  region: us-west-2
+
+vpc:
+  cidr: 172.16.0.0/16
+  autoAllocateIPv6: true
+  clusterEndpoints:
+    privateAccess: false
+    publicAccess: true
+
+nodeGroups:
+  - name: nodegroup-1
+    instanceType: m5.xlarge
+    amiFamily: "Ubuntu2004"
+    minSize: 2
+    maxSize: 4
+    desiredCapacity: 3
+
+cloudWatch:
+  clusterLogging:
+    enableTypes: ["audit", "controllerManager", "authenticator"]
+    logRetentionInDays: 10

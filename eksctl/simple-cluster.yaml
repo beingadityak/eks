@@ -4,7 +4,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: my-first-cluster
+  name: basic-cluster
   region: us-west-2
 
 nodeGroups:
@@ -15,3 +15,4 @@ nodeGroups:
 cloudWatch:
   clusterLogging:
     enableTypes: ["audit", "controllerManager", "authenticator"]
+    logRetentionInDays: 10
