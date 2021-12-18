@@ -1,1 +1,17 @@
 ---
+# Basic EKS cluster configuration for a 2-node cluster through eksctl
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: my-first-cluster
+  region: us-west-2
+
+nodeGroups:
+  - name: nodegroup-1
+    instanceType: m5.xlarge
+    nodeCount: 2
+
+cloudWatch:
+  clusterLogging:
+    enableTypes: ["audit", "controllerManager", "authenticator"]
