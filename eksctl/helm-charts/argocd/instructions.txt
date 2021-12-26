@@ -1,0 +1,4 @@
+helm upgrade --install --atomic --debug --cleanup-on-fail --namespace argocd --version 3.29.4 --values argocd/values.yaml argo-cd argo/argo-cd
+
+
+https://github.com/argoproj/argo-helm/tree/master/charts/argo-cd
