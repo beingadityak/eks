@@ -16,7 +16,7 @@ metadata:
 vpc:
   cidr: 172.16.0.0/16
 
-nodeGroups:
+managedNodeGroups:
   - name: group1
     instanceType: m5.xlarge
     minSize: 2
