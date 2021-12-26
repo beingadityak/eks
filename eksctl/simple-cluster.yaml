@@ -3,16 +3,31 @@
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
+availabilityZones:
+  - us-west-2a
+  - us-west-2b
+  - us-west-2c
+
 metadata:
-  name: basic-cluster
+  name: simple-cluster
   region: us-west-2
+  version: "1.20"
+
+vpc:
+  cidr: 172.16.0.0/16
 
 nodeGroups:
-  - name: nodegroup-1
+  - name: group1
     instanceType: m5.xlarge
-    nodeCount: 2
+    minSize: 2
+    maxSize: 4
+    desiredCapacity: 3
+    iam:
+      withAddonPolicies:
+        albIngress: true
+        cloudWatch: true
 
 cloudWatch:
   clusterLogging:
     enableTypes: ["audit", "controllerManager", "authenticator"]
-    logRetentionInDays: 10
+    logRetentionInDays: 7
